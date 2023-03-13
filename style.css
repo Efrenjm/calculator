@@ -10,18 +10,15 @@ body{
     padding: 0;
 }
 .calculator{
-    width: calc(5,clamp(50px,7vw,80px));
+    width: calc(5,clamp(50px,10rem,80px));
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 .display{
     height: min(20vh,18vw, auto);
     width: 100%;
-    /* height: clamp(100px,min(10vh,8vw),500px);
-    width: calc(5*clamp(50px,7vw,80px)); */
     background-color: rgb(44, 44, 44);
     display: flex;
     flex-direction: column;
@@ -30,16 +27,12 @@ body{
     font-size: 1.2rem;
     text-align: right;
     color: white;
-
 }
 #current{
-    
     margin: 0;
     padding: 1vh 2vw;
-    
 }
 #history{
-    
     margin: 0;
     padding: 1vh 2vw;
 }
@@ -58,16 +51,30 @@ body{
 .button{
     justify-content: center;
     color: white;
-    border-radius: 6vw;
+    border: none;
+    border-radius: 100%;
     background-color: rgb(44, 44, 44);
     display: flex;
     align-items: center;
     font-size: 20px;
     user-select: none;
+    transition: color 0.15s;
+    transition: background-color 0.15s ease-in-out;
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
 }
 .button.upper{
-    background-color: rgb(199, 198, 198);
+    background-color:silver;
 }
 .button.right{
     background-color: orange;
+    /* transition: color 0.1s;
+    transition: background-color 0.1s ease-in;
+    -webkit-transition: background-color 0.1s ease-in;
+    -o-transition: background-color 0.1s ease-in;
+    -moz-transition: background-color 0.1s ease-in; */
+}
+#zero{
+    border-radius: max(5vw,20rem);
 }
