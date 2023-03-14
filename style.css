@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,100&display=swap');
 
+@keyframes example {
+    0% {
+        background-color: rgb(44, 44, 44);
+        color: white;
+    }
+    50% {
+        background-color: white;
+        color: rgb(44, 44, 44);
+    }
+    100% {
+        background-color: rgb(44, 44, 44);
+        color: white;
+    }
+}
+
+
 body{
     text-align: center;
     display: flex;
@@ -58,12 +74,21 @@ body{
     align-items: center;
     font-size: 20px;
     user-select: none;
-    transition: color 0.15s;
-    transition: background-color 0.15s ease-in-out;
+    
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
     -webkit-transition: background-color 0.15s ease-in-out;
     -o-transition: background-color 0.15s ease-in-out;
     -moz-transition: background-color 0.15s ease-in-out;
+
+    /* animation-name: example;
+    animation-duration: 1s; */
 }
+/* .button:active {
+    background-color: white;
+    color: rgb(44, 44, 44);
+    animation-name: example;
+    animation-duration: 5s;
+} */
 .button.upper{
     background-color:silver;
 }
@@ -78,3 +103,19 @@ body{
 #zero{
     border-radius: max(5vw,20rem);
 }
+.example{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+
+  
+  /* The element to apply the animation to */
+  .example {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+  } 

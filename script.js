@@ -17,12 +17,30 @@ let current = document.getElementById("current")
     // AC button 
 buttons[0].addEventListener("click",() => current.innerHTML = 0);
 
+
+// const newspaperSpinning = [
+//     { transition: "color 0.15s ease-in-out, background-color 0.15s ease-in-out" },
+//     { transition: "background-color 0.15s ease-in-out" },
+//   ];
+  
+// const newspaperTiming = {
+//     duration: 2000,
+//     iterations: 1,
+//   };
+
+
+
+
     // Numbers buttons 
 for (i of [4,5,6,8,9,10,12,13,14,16]){
     buttons[i].addEventListener("click", function(){
         current.innerHTML = current.innerHTML == "0" ? this.innerHTML : current.innerHTML + this.innerHTML
-        this.style.backgroundColor = "white"
-        this.style.color = "rgb(45,45,45)"
+        this.style.animation = ""
+        this.style.animation = "example 0.3s"
+        // this.animate(newspaperSpinning,newspaperTiming)
+        
+        // this.style.backgroundColor = "white"
+        // this.style.color = "rgb(45,45,45)"
 
         // this.style.backgroundColor = "rgb(45,45,45)"
         // this.style.color = "white"
