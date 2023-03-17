@@ -22,10 +22,6 @@ const timing = {
     iterations: 1,
 };
 
-
-    // AC button 
-buttons[0].addEventListener("click",() => current.innerHTML = 0);
-
     // Special buttons animation
 for (i=0; i<3; i++){
     buttons[i].addEventListener("click", function(){
@@ -38,6 +34,7 @@ for (i of [4,5,6,8,9,10,12,13,14,16]){
     buttons[i].addEventListener("click", function(){
         current.innerHTML = current.innerHTML == "0" ? this.innerHTML : current.innerHTML + this.innerHTML;
         this.animate(numberButtonsAnimation, timing);
+        buttons[0].innerHTML = "C"
     });
 }
 
@@ -45,28 +42,54 @@ for (i of [4,5,6,8,9,10,12,13,14,16]){
 buttons[17].addEventListener("click", function(){
     !current.innerHTML.includes(".") ? current.innerHTML = current.innerHTML + "." : null;
     this.animate(numberButtonsAnimation,timing)
+    buttons[0].innerHTML = "C"
 })
+
+const operationalButtons = {
+    "÷":3,
+    "×":7,
+    "+":11,
+    "-":15,
+}
+let operationMarked = null
 
     // Operational buttons 
 for(i of [3,7,11,15]){
     buttons[i].addEventListener("click", function(){
-        this.style.backgroundColor = "white";
-        this.style.color = "orange";
-        // if(){
+        if(operationMarked){
+            ind = operationalButtons[operationMarked];
+            if(ind == operationalButtons[this.innerHTML]){
+                this.animate(eqButtonAnimation.slice(0,2),timing)
+            }
+            buttons[ind].style.backgroundColor = orange;
+            buttons[ind].style.color = white;
+        }
+        console.log(operationalButtons[operationMarked])
+        this.style.backgroundColor = white;
+        this.style.color = orange;
+        operationMarked = this.innerHTML;
+        buttons[0].innerHTML = "C";
 
-        // }
     });
 }
 
-// buttons[4].addEventListener("click",()=>{
-//     number = 7;
-//     current.innerHTML == 0 ? current.innerHTML = number : current.innerHTML + String(number)
-// })
 
-// buttons[17].addEventListener("click", ()=>{
-//     console.log(current.innerHTML)
-//     current.innerHTML = String(current.value) + String(0)
-// })
-// buttons[15].addEventListener("click", ()=>{
-//     current.innerHTML = String(current.value) + String(3)
-// })
+    // AC button 
+buttons[0].addEventListener("click",function() { 
+    if(operationMarked){
+        if ( this.innerHTML === "C" && parseFloat(current.innerHTML)!==0){ 
+            current.innerHTML = 0;
+            this.innerHTML = "AC";
+        }else{ 
+            ind = operationalButtons[operationMarked];
+            buttons[ind].style.backgroundColor = orange;
+            buttons[ind].style.color = white;
+            operationMarked = null;
+            parseInt(current.innerHTML)==0 ? buttons[0].innerHTML="AC" : null;
+        }
+    }else{
+        current.innerHTML = 0;
+        this.innerHTML = "AC";
+    }
+    
+});
