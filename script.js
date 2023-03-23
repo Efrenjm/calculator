@@ -73,8 +73,14 @@ let calculate = ()=>{
             cachedNumber = cachedNumber-cachedOperator['value'];
             break;
     }
-    current.innerHTML = cachedNumber;
-    cachedNumber !== 'Error' ? insertCommas() : null;
+    if (cachedNumber !== 'Error'){
+        cachedNumber = parseFloat(cachedNumber.toPrecision(9));
+        current.innerHTML = cachedNumber;
+        insertCommas();
+    }else{ 
+        current.innerHTML = cachedNumber; 
+    }
+    // cachedNumber !== 'Error' ? insertCommas() : null;
     console.log(cachedNumber)
 }
 
@@ -89,15 +95,7 @@ for (i of [4,5,6,8,9,10,12,13,14,16]){
         }else{
             limitNotReached() ? current.innerHTML += this.innerHTML : null;
         }
-
-            // Insert commas at every 3 integer numbers
         insertCommas();
-        // current.innerHTML = current.innerHTML.replaceAll("," , "");
-        // intlen = current.innerHTML.includes(".") ? current.innerHTML.indexOf(".") : current.innerHTML.length;
-        // commas = Math.floor((intlen-1-negative)/3);
-        // for(i=0; i<commas; i++){
-        //     current.innerHTML = current.innerHTML.slice(0,intlen-3*(i+1)) + "," + current.innerHTML.slice(intlen-3*(i+1));
-        // }
 
             // Animation of the buttons
         this.animate(numberButtonsAnimation, timing);
@@ -190,10 +188,15 @@ buttons[18].addEventListener('click',function(){
         calculate();
         unmarkOperationalButton();
     }else{
+        // cachedOperator['value'] = parseFloat(current.innerHTML.replaceAll(",",""))
+        !firstNumber ? cachedNumber = parseFloat(current.innerHTML.replaceAll(",","")) : null;
         cachedOperator ? calculate() : null;
     }
-    console.log(cachedNumber)
+    firstNumber = true;
+    // console.log(cachedNumber)
 
         // Animation
     this.animate(eqButtonAnimation, timing);
 })
+
+
